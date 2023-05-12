@@ -1,0 +1,29 @@
+section {
+    width: 80%;
+    margin: auto;
+}
+
+.section {
+    &__h2 {
+        font-family: $accent-font;
+        color: $green;
+        margin: 0 auto;
+        width: 80%;
+        text-align: center;
+    }
+}
+
+.section1 {
+    background-color: beige;
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+
+        div {
+            width: 60%;
+            background-color: $white;
+            padding: 2rem;
+        }
+    }
+}

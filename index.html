@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Adobe font -->
+    <script>
+        (function (d) {
+            var config = {
+                    kitId: 'oau6plh',
+                    scriptTimeout: 3000,
+                    async: true
+                },
+                h = d.documentElement,
+                t = setTimeout(function () {
+                    h.className = h.className.replace(/\bwf-loading\b/g, "") +
+                        " wf-inactive";
+                }, config.scriptTimeout),
+                tk = d.createElement("script"),
+                f = false,
+                s = d.getElementsByTagName("script")[0],
+                a;
+            h.className += " wf-loading";
+            tk.src = 'https://use.typekit.net/' + config.kitId + '.js';
+            tk.async = true;
+            tk.onload = tk.onreadystatechange = function () {
+                a = this.readyState;
+                if (f || a && a != "complete" && a != "loaded") return;
+                f = true;
+                clearTimeout(t);
+                try {
+                    Typekit.load(config)
+                } catch (e) {}
+            };
+            s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <div class="cover">
+        <h3 class="cover__h3">自然豊かな高知県の<br>
+            新鮮な有機野菜を<br>
+            農家直送でお届けします
+        </h3>
+    </div>
+
+    <header class="header">
+        <ul class="pc-nav">
+            <li class="pc-nav__li"><a href="#">有機野菜へのこだわり</a></li>
+            <li class="pc-nav__li"><a href="#">お届けする野菜</a></li>
+            <li class="pc-nav__li"><a href="#">みんなのレシピ</a></li>
+        </ul>
+
+    </header>
+
+    <section class="section1">
+        <div class="section1__container">
+            <img src="img/parts/yasai-kago.png" alt="カゴ入りの野菜画像">
+            <div><p>農薬と化学肥料を使わずに育てた<br>
+                安心・安全な高知の旬の野菜です。<br>
+                今一番おいしい旬のお野菜を農家が厳選。<br>
+                新鮮な状態でご家庭までお届けします。</p></div>
+        </div>
+        <h2 class="section__h2">農家のこだわり</h2>
+
+    </section>
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
