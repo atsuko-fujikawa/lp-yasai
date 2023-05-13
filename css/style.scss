@@ -3,6 +3,8 @@ $white: #fff;
 $black: #333;
 $green: #1A7400;
 $red: #DD483B;
+$beige: #fff9eb;
+$brown: #4f371f;
 
 $main-font: "游ゴシック体",
 "Yu Gothic",
@@ -47,10 +49,18 @@ img {
     vertical-align: bottom;
 }
 
+h1,h2,h3,h4,h5 {
+    margin: 0;
+}
+
 a {
     color: $black;
     text-decoration: none;
     transition: 0.3s;
+
+    &:hover {
+        text-decoration: none;
+    }
 }
 
 li {
@@ -62,6 +72,10 @@ ul {
     margin: 0;
 }
 
+p {
+    margin: 0;
+}
+
 ///////////// scssファイルの読み込み ///////////////
  
-@import "header","section";
+@import "header","section","humburger","modal","slider","footer";

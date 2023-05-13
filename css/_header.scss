@@ -1,3 +1,7 @@
+h1 {
+    display: none;
+}
+
 .cover {
     background-image: url(../img/parts/main-image.jpg);
     aspect-ratio: 10 / 3.8;
@@ -18,6 +22,9 @@
         max-width: $max;
         margin: 3rem auto;
         text-shadow: 1px 2px 3px $green;
+        transform: skewX(-12deg);
+        line-height: 1.6;
+
     }
 }
 

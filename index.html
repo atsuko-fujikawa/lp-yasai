@@ -11,14 +11,13 @@
     <script>
         (function (d) {
             var config = {
-                    kitId: 'oau6plh',
+                    kitId: 'ztn2mbe',
                     scriptTimeout: 3000,
                     async: true
                 },
                 h = d.documentElement,
                 t = setTimeout(function () {
-                    h.className = h.className.replace(/\bwf-loading\b/g, "") +
-                        " wf-inactive";
+                    h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
                 }, config.scriptTimeout),
                 tk = d.createElement("script"),
                 f = false,
@@ -42,11 +41,37 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <!-- Bootstrap CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
     <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
+    <h1>高知県の有機野菜をお届け</h1>
+
+    <nav id="nav">
+        <div class="hamburger" v-on:click='active=!active'>
+            <span class="line line01" v-bind:class="{'v-line01':active}"></span>
+            <span class="line line02" v-bind:class="{'v-line02':active}"></span>
+            <span class="line line03" v-bind:class="{'v-line03':active}"></span>
+        </div>
+        <!--/ハンバーガーボタンここまで-->
+        <div class="menu" v-show="active">
+            <ul>
+                <li><a href="#concept" v-on:click='active=!active'>CONCEPT</a></li>
+                <li><a href="#product" v-on:click='active=!active'>PRODUCT</a></li>
+                <li><a href="#company" v-on:click='active=!active'>COMPANY</a></li>
+                <li><a href="#news" v-on:click='active=!active'>NEWS</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!--/メニューここまで-->
 
     <div class="cover">
         <h3 class="cover__h3">自然豊かな高知県の<br>
@@ -57,28 +82,239 @@
 
     <header class="header">
         <ul class="pc-nav">
-            <li class="pc-nav__li"><a href="#">有機野菜へのこだわり</a></li>
-            <li class="pc-nav__li"><a href="#">お届けする野菜</a></li>
-            <li class="pc-nav__li"><a href="#">みんなのレシピ</a></li>
+            <li class="pc-nav__li"><a href="#menu1">農家のこだわり</a></li>
+            <li class="pc-nav__li"><a href="#menu2">お届けする野菜</a></li>
+            <li class="pc-nav__li"><a href="#menu3">みんなのレシピ</a></li>
         </ul>
 
     </header>
 
-    <section class="section1">
-        <div class="section1__container">
-            <img src="img/parts/yasai-kago.png" alt="カゴ入りの野菜画像">
-            <div><p>農薬と化学肥料を使わずに育てた<br>
-                安心・安全な高知の旬の野菜です。<br>
-                今一番おいしい旬のお野菜を農家が厳選。<br>
-                新鮮な状態でご家庭までお届けします。</p></div>
-        </div>
-        <h2 class="section__h2">農家のこだわり</h2>
+    <main>
 
-    </section>
+        <section class="section1">
+            <div class="section1__top">
+                <img src="img/parts/yasai-kago.png" alt="カゴ入りの野菜画像">
+                <div>
+                    <p>農薬と化学肥料を使わずに育てた<br>
+                        安心・安全な高知の旬の野菜です。<br>
+                        今一番おいしい旬のお野菜を農家が厳選。<br>
+                        新鮮な状態でご家庭までお届けします。</p>
+                </div>
+            </div>
+
+            <div class="section1__bottom" id="menu1">
+                <h2 class="section__h2">農家のこだわり</h2>
+                <div class="circle-wrap">
+                    <div class="circle-box">
+                        <p class="circle-box__number">Point 1</p>
+                        <h4 class="circle-box__h4">有機JAS取得</h4>
+                        <p class="circle-box__text">こに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。</p>
+                    </div>
+                    <div class="circle-box">
+                        <p class="circle-box__number">Point 2</p>
+                        <h4 class="circle-box__h4">朝採れ野菜</h4>
+                        <p class="circle-box__text">こに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。</p>
+                    </div>
+                    <div class="circle-box">
+                        <p class="circle-box__number">Point 3</p>
+                        <h4 class="circle-box__h4">クール便配送</h4>
+                        <p class="circle-box__text">こに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <a href="#" class="main-btn">まずはお試し<i class="fas fa-angle-right"></i></a>
+
+        </section>
+
+        <section class="section2" id="menu2">
+            <h2 class="section__h2">お届けの野菜について</h2>
+            <ul id="list" v-cloak>
+                <li v-on:click="openModal(vegetable.id)" v-for="vegetable in vegetableData" :key="id">
+                    <div width="170px"><img class="swim" v-bind:src="vegetable.img" v-bind:alt="vegetable.name"></div>
+                    <p>more</p>
+                </li>
+                <transition name="component-fade">
+                    <div id="overlay" v-show="showContent" v-on:click="closeModal" v-cloak>
+                        <div id="content" v-cloak>
+                            <img class="swim" v-bind:src="currentVegetable.img" alt="">
+                            <table>
+                                <tr>
+                                    <th>名前</th>
+                                    <td>{{ currentVegetable.name }}</td>
+                                </tr>
+                                <tr>
+                                    <th>旬の時期</th>
+                                    <td>{{ currentVegetable.season }}</td>
+                                </tr>
+                                <tr>
+                                    <th>おすすめ料理</th>
+                                    <td>{{ currentVegetable.eat }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">{{ currentVegetable.point }}</td>
+                                </tr>
+                            </table>
+                            <div class="close-btn" v-on:click="closeModal"><i class="fas fa-times"></i></div>
+                        </div>
+                    </div>
+                </transition>
+            </ul>
+            <div class="section2__box">
+                <h4>ご利用の注意</h4>
+                <div class="section2__container">
+                    <div>
+                        <h5>お届けする野菜の種類について</h5>
+                        <p>ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。
+                        </p>
+                    </div>
+                    <div>
+                        <h5>お届けする時期について</h5>
+                        <p>ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。
+                        </p>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <section class="section3">
+            <h2 class="section__h2">まずはお試し！</h2>
+            <div class="section3__top">
+                <p>農薬と化学肥料を使わずに育てた<br>
+                    安心・安全な高知の旬の野菜です。<br>
+                    今一番おいしい旬のお野菜を農家が厳選。<br>
+                    新鮮な状態でご家庭までお届けします。</p>
+                <img src="img/parts/yasai-hako.png" alt="箱入りの野菜画像">
+
+            </div>
+            <a href="#" class="main-btn">ご購入はこちらから<i class="fas fa-angle-right"></i></a>
+
+        </section>
+
+        <section class="recipe" id="menu3">
+
+            <h2 class="section__h2">みんなのレシピ!</h2>
+            <div class="swiper">
+                <ul class="swiper-wrapper">
+                    <!-- Slides -->
+                    <li class="swiper-slide">
+                        <a href="#">
+                            <div class="recipe-card">
+                                <p class="recipe-card__title">焼き野菜</p>
+                                <p class="recipe-card__name"><i class="fas fa-heart fa-lg"></i>AAAさん</p>
+                                <img src="img/recipe/recipe01.jpg" alt="">
+                                <p class="recipe-card__hashtag">#丸ごと&nbsp;#パーティ飯<br>#簡単&nbsp;#カラフル&nbsp;#オーガニック</p>
+
+
+                            </div>
+                        </a>
+                    </li>
+                    <li class="swiper-slide">
+                        <a href="#">
+                            <div class="recipe-card">
+                                <p class="recipe-card__title">アスパラベーコン</p>
+                                <p class="recipe-card__name"><i class="fas fa-star fa-lg"></i>高知大好きさん</p>
+                                <img src="img/recipe/recipe02.jpg" alt="">
+                                <p class="recipe-card__hashtag">#おつまみ&nbsp;#おかず<br>#今が旬&nbsp;#お弁当</p>
+
+
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="swiper-slide">
+                        <a href="#">
+                            <div class="recipe-card">
+                                <p class="recipe-card__title">丸ごと玉ねぎスープ</p>
+                                <p class="recipe-card__name"><i class="fas fa-star-and-crescent fa-lg"></i>ヘルシーさん</p>
+                                <img src="img/recipe/recipe03.jpg" alt="">
+                                <p class="recipe-card__hashtag">#丸ごと&nbsp;#パーティ飯<br>#簡単&nbsp;#インパクト&nbsp;#有機栽培</p>
+
+
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="swiper-slide">
+                        <a href="#">
+                            <div class="recipe-card">
+                                <p class="recipe-card__title">たっぷりキャベツスープ</p>
+                                <p class="recipe-card__name"><i class="fas fa-star-and-crescent fa-lg"></i>シェフさん</p>
+                                <img src="img/recipe/recipe04.jpg" alt="">
+                                <p class="recipe-card__hashtag">#キャベツ大量消費&nbsp;#ヘルシー<br>#簡単&nbsp;#あっさり&nbsp;#オーガニック</p>
+
+
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="swiper-slide">
+                        <a href="#">
+                            <div class="recipe-card">
+                                <p class="recipe-card__title">きゅうりのキムチ和え</p>
+                                <p class="recipe-card__name"><i class="fas fa-apple-alt fa-lg"></i>BBBさん</p>
+                                <img src="img/recipe/recipe05.jpg" alt="">
+                                <p class="recipe-card__hashtag">#おつまみ&nbsp;#おかず<br>#今が旬&nbsp;#きゅうり大量消費</p>
+
+
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="swiper-slide">
+                        <a href="#">
+                            <div class="recipe-card">
+                                <p class="recipe-card__title">カラフルサラダ</p>
+                                <p class="recipe-card__name"><i class="fas fa-star-of-life fa-lg"></i>料理人さん</p>
+                                <img src="img/recipe/recipe06.jpg" alt="">
+                                <p class="recipe-card__hashtag">#簡単&nbsp;#ヘルシー&nbsp;#パーティ飯<br>#旬の野菜&nbsp;#ドレッシング</p>
+
+
+                            </div>
+                        </a>
+                    </li>
+
+
+                </ul>
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"><i class="fas fa-chevron-left"></i></div>
+                <div class="swiper-button-next"><i class="fas fa-chevron-right"></i></div>
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <h3 class="footer-top__h3">安心安全の<br>
+                オーガニック野菜<br>
+            </h3>
+        </div>
+        <div class="footer-bottom">
+            &copy;atsuko-fujikawa2023
+        </div>
+
+
+    </footer>
+
+
 
     <!-- JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Font Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.10.2/js/all.js"></script>
+
     <script src="js/main.js"></script>
+    <script src="js/accordion.js"></script>
+    <script src="js/hamburger.js"></script>
+    <script src="js/list.js"></script>
+
+
 
 </body>
 
