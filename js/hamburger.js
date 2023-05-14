@@ -1,8 +1,5 @@
-var app = new Vue({
-    el: '#nav',
-    data: {
-      active: false
-    }
-  });
-
-  
+$(document).ready(function(){
+    $("#nav-button").on("click", function(){
+        $(".sp-nav").slideToggle();
+    });
+});

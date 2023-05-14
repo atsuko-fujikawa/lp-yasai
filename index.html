@@ -50,51 +50,48 @@
 
     <link rel="stylesheet" href="css/style.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
+</head>
+
 </head>
 
 <body>
+    
     <h1>高知県の有機野菜をお届け</h1>
 
-    <nav id="nav">
-        <div class="hamburger" v-on:click='active=!active'>
-            <span class="line line01" v-bind:class="{'v-line01':active}"></span>
-            <span class="line line02" v-bind:class="{'v-line02':active}"></span>
-            <span class="line line03" v-bind:class="{'v-line03':active}"></span>
-        </div>
-        <!--/ハンバーガーボタンここまで-->
-        <div class="menu" v-show="active">
-            <ul>
-                <li><a href="#concept" v-on:click='active=!active'>CONCEPT</a></li>
-                <li><a href="#product" v-on:click='active=!active'>PRODUCT</a></li>
-                <li><a href="#company" v-on:click='active=!active'>COMPANY</a></li>
-                <li><a href="#news" v-on:click='active=!active'>NEWS</a></li>
+    <header class="sp-header">
+        <div id="nav-button" class="nav-button"><i class="fas fa-bars" aria-label="menu"></i></div>
+        <nav class="sp-nav">
+            <ul class="sp-nav-list">
+                <li class="pc-nav__li"><a href="#menu1">農家のこだわり</a></li>
+                <li class="pc-nav__li"><a href="#menu2">お届けする野菜</a></li>
+                <li class="pc-nav__li"><a href="#menu3">みんなのレシピ</a></li>    
             </ul>
-        </div>
-    </nav>
-    <!--/メニューここまで-->
+        </nav>
+    </header>
+
 
     <div class="cover">
-        <h3 class="cover__h3">自然豊かな高知県の<br>
+        <h3 class="cover__h3 animate__animated animate__slideInRight">自然豊かな高知県の<br>
             新鮮な有機野菜を<br>
             農家直送でお届けします
         </h3>
     </div>
 
-    <header class="header">
+    <header class="pc-header">
         <ul class="pc-nav">
             <li class="pc-nav__li"><a href="#menu1">農家のこだわり</a></li>
             <li class="pc-nav__li"><a href="#menu2">お届けする野菜</a></li>
             <li class="pc-nav__li"><a href="#menu3">みんなのレシピ</a></li>
         </ul>
-
     </header>
 
     <main>
 
-        <section class="section1">
-            <div class="section1__top">
-                <img src="img/parts/yasai-kago.png" alt="カゴ入りの野菜画像">
-                <div>
+        <section class="points">
+            <div class="points__top">
+                <div class="points__top--left animate__animated animate__fadeInUp"><img src="img/parts/yasai-kago.png" alt="カゴ入りの野菜画像"></div>
+                <div class="points__top--right">
                     <p>農薬と化学肥料を使わずに育てた<br>
                         安心・安全な高知の旬の野菜です。<br>
                         今一番おいしい旬のお野菜を農家が厳選。<br>
@@ -102,20 +99,20 @@
                 </div>
             </div>
 
-            <div class="section1__bottom" id="menu1">
+            <div class="points__bottom" id="menu1">
                 <h2 class="section__h2">農家のこだわり</h2>
                 <div class="circle-wrap">
-                    <div class="circle-box">
+                    <div class="circle-box fadeInUpTrigger animate__faster">
                         <p class="circle-box__number">Point 1</p>
-                        <h4 class="circle-box__h4">有機JAS取得</h4>
+                        <h4 class="circle-box__h4">有機JAS認定</h4>
                         <p class="circle-box__text">こに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。</p>
                     </div>
-                    <div class="circle-box">
+                    <div class="circle-box fadeInUpTrigger animate__fast">
                         <p class="circle-box__number">Point 2</p>
                         <h4 class="circle-box__h4">朝採れ野菜</h4>
                         <p class="circle-box__text">こに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。</p>
                     </div>
-                    <div class="circle-box">
+                    <div class="circle-box fadeInUpTrigger">
                         <p class="circle-box__number">Point 3</p>
                         <h4 class="circle-box__h4">クール便配送</h4>
                         <p class="circle-box__text">こに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。</p>
@@ -124,28 +121,38 @@
                 </div>
             </div>
 
-            <a href="#" class="main-btn">まずはお試し<i class="fas fa-angle-right"></i></a>
+            <a href="#" class="main-btn headShakeTrigger">まずはお試し<i class="fas fa-angle-right"></i></a>
 
         </section>
 
-        <section class="section2" id="menu2">
-            <h2 class="section__h2">お届けの野菜について</h2>
+        <section class="kinds" id="menu2">
+
+            <div class="gizagiza-top"></div>
+
+            <div class="kinds-title">
+                <h2 class="section__h2">お届けの野菜について</h2>
+                <p class="kinds-text">
+                    農家が今一番おいしい野菜を選んでお届けします<br>
+                    ほんの一部の商品をご紹介！
+                </p>
+            </div>
+
             <ul id="list" v-cloak>
                 <li v-on:click="openModal(vegetable.id)" v-for="vegetable in vegetableData" :key="id">
-                    <div width="170px"><img class="swim" v-bind:src="vegetable.img" v-bind:alt="vegetable.name"></div>
-                    <p>more</p>
+                    <div><img class="swim" v-bind:src="vegetable.img" v-bind:alt="vegetable.name"></div>
+                    <p class="more-arrow">more</p>
                 </li>
                 <transition name="component-fade">
                     <div id="overlay" v-show="showContent" v-on:click="closeModal" v-cloak>
                         <div id="content" v-cloak>
-                            <img class="swim" v-bind:src="currentVegetable.img" alt="">
+                            <img class="swim" v-bind:src="currentVegetable.img">
                             <table>
                                 <tr>
                                     <th>名前</th>
                                     <td>{{ currentVegetable.name }}</td>
                                 </tr>
                                 <tr>
-                                    <th>旬の時期</th>
+                                    <th>旬</th>
                                     <td>{{ currentVegetable.season }}</td>
                                 </tr>
                                 <tr>
@@ -161,9 +168,9 @@
                     </div>
                 </transition>
             </ul>
-            <div class="section2__box">
+            <div class="kinds__box">
                 <h4>ご利用の注意</h4>
-                <div class="section2__container">
+                <div class="kinds__container">
                     <div>
                         <h5>お届けする野菜の種類について</h5>
                         <p>ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。ここに説明文を入れます。
@@ -175,115 +182,150 @@
                         </p>
                     </div>
                 </div>
-
-
             </div>
+
+            <div class="gizagiza-bottom"></div>
         </section>
 
-        <section class="section3">
+        <section class="trial">
             <h2 class="section__h2">まずはお試し！</h2>
-            <div class="section3__top">
-                <p>農薬と化学肥料を使わずに育てた<br>
-                    安心・安全な高知の旬の野菜です。<br>
-                    今一番おいしい旬のお野菜を農家が厳選。<br>
-                    新鮮な状態でご家庭までお届けします。</p>
-                <img src="img/parts/yasai-hako.png" alt="箱入りの野菜画像">
+            <div class="trial-box fadeInUpTrigger">
+                <div class="trial-box__ribon"><img src="img/parts/itemu-ribon.png" alt="はじめての方限定"></div>
+                <div class="trial-box__left"><img src="img/parts/item-text.jpg" alt="旬の有機野菜1980円"></div>
+                <div class="trial-box__right"><img src="img/parts/yasai-hako.png" alt="箱入りの野菜画像"></div>
 
             </div>
-            <a href="#" class="main-btn">ご購入はこちらから<i class="fas fa-angle-right"></i></a>
+            <a href="#" class="main-btn headShakeTrigger">ご購入はこちらから<i class="fas fa-angle-right"></i></a>
 
         </section>
 
         <section class="recipe" id="menu3">
-
-            <h2 class="section__h2">みんなのレシピ!</h2>
-            <div class="swiper">
-                <ul class="swiper-wrapper">
-                    <!-- Slides -->
-                    <li class="swiper-slide">
-                        <a href="#">
-                            <div class="recipe-card">
-                                <p class="recipe-card__title">焼き野菜</p>
-                                <p class="recipe-card__name"><i class="fas fa-heart fa-lg"></i>AAAさん</p>
-                                <img src="img/recipe/recipe01.jpg" alt="">
-                                <p class="recipe-card__hashtag">#丸ごと&nbsp;#パーティ飯<br>#簡単&nbsp;#カラフル&nbsp;#オーガニック</p>
+            <div class="gizagiza-top"></div>
 
 
-                            </div>
-                        </a>
-                    </li>
-                    <li class="swiper-slide">
-                        <a href="#">
-                            <div class="recipe-card">
-                                <p class="recipe-card__title">アスパラベーコン</p>
-                                <p class="recipe-card__name"><i class="fas fa-star fa-lg"></i>高知大好きさん</p>
-                                <img src="img/recipe/recipe02.jpg" alt="">
-                                <p class="recipe-card__hashtag">#おつまみ&nbsp;#おかず<br>#今が旬&nbsp;#お弁当</p>
+            <h2 class="section__h2">みんなのレシピ！</h2>
+
+            <div class="slider">
+
+                <div class="swiper">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <div class="recipe-card">
+                                    <p class="recipe-card__title">焼き野菜</p>
+                                    <p class="recipe-card__name"><i class="fas fa-heart fa-lg"></i>AAAさん</p>
+                                    <div class="recipe-card__img"><img src="img/recipe/recipe01.jpg" alt="焼き野菜"></div>                                   
+                                    <p class="recipe-card__hashtag">#丸ごと&nbsp;#パーティ飯<br>#簡単&nbsp;#カラフル&nbsp;#オーガニック</p>
 
 
-                            </div>
-                        </a>
-                    </li>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <div class="recipe-card">
+                                    <p class="recipe-card__title">アスパラベーコン</p>
+                                    <p class="recipe-card__name"><i class="fas fa-star fa-lg"></i>高知大好きさん</p>
+                                    <div class="recipe-card__img"><img src="img/recipe/recipe02.jpg" alt="アスパラベーコン"></div>                                    
+                                    <p class="recipe-card__hashtag">#おつまみ&nbsp;#おかず<br>#今が旬&nbsp;#お弁当</p>
+                                </div>
+                            </a>
+                        </li>
 
-                    <li class="swiper-slide">
-                        <a href="#">
-                            <div class="recipe-card">
-                                <p class="recipe-card__title">丸ごと玉ねぎスープ</p>
-                                <p class="recipe-card__name"><i class="fas fa-star-and-crescent fa-lg"></i>ヘルシーさん</p>
-                                <img src="img/recipe/recipe03.jpg" alt="">
-                                <p class="recipe-card__hashtag">#丸ごと&nbsp;#パーティ飯<br>#簡単&nbsp;#インパクト&nbsp;#有機栽培</p>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <div class="recipe-card">
+                                    <p class="recipe-card__title">丸ごと玉ねぎスープ</p>
+                                    <p class="recipe-card__name"><i class="fas fa-star-and-crescent fa-lg"></i>ヘルシーさん
+                                    </p>
+                                    <div class="recipe-card__img"><img src="img/recipe/recipe03.jpg" alt="丸ごと玉ねぎスープ"></div>                                 
+                                    <p class="recipe-card__hashtag">#丸ごと&nbsp;#パーティ飯<br>#簡単&nbsp;#インパクト&nbsp;#有機栽培</p>
+                             </div>
+                            </a>
+                        </li>
 
-
-                            </div>
-                        </a>
-                    </li>
-
-                    <li class="swiper-slide">
-                        <a href="#">
-                            <div class="recipe-card">
-                                <p class="recipe-card__title">たっぷりキャベツスープ</p>
-                                <p class="recipe-card__name"><i class="fas fa-star-and-crescent fa-lg"></i>シェフさん</p>
-                                <img src="img/recipe/recipe04.jpg" alt="">
-                                <p class="recipe-card__hashtag">#キャベツ大量消費&nbsp;#ヘルシー<br>#簡単&nbsp;#あっさり&nbsp;#オーガニック</p>
-
-
-                            </div>
-                        </a>
-                    </li>
-
-                    <li class="swiper-slide">
-                        <a href="#">
-                            <div class="recipe-card">
-                                <p class="recipe-card__title">きゅうりのキムチ和え</p>
-                                <p class="recipe-card__name"><i class="fas fa-apple-alt fa-lg"></i>BBBさん</p>
-                                <img src="img/recipe/recipe05.jpg" alt="">
-                                <p class="recipe-card__hashtag">#おつまみ&nbsp;#おかず<br>#今が旬&nbsp;#きゅうり大量消費</p>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <div class="recipe-card">
+                                    <p class="recipe-card__title">たっぷりキャベツスープ</p>
+                                    <p class="recipe-card__name"><i class="fas fa-star-and-crescent fa-lg"></i>シェフさん</p>
+                                    <div class="recipe-card__img"><img src="img/recipe/recipe04.jpg" alt="たっぷりキャベツスープ"></div>
+                                    <p class="recipe-card__hashtag">#キャベツ大量消費&nbsp;#ヘルシー<br>#簡単&nbsp;#あっさり&nbsp;#オーガニック
+                                    </p>
 
 
-                            </div>
-                        </a>
-                    </li>
+                                </div>
+                            </a>
+                        </li>
 
-                    <li class="swiper-slide">
-                        <a href="#">
-                            <div class="recipe-card">
-                                <p class="recipe-card__title">カラフルサラダ</p>
-                                <p class="recipe-card__name"><i class="fas fa-star-of-life fa-lg"></i>料理人さん</p>
-                                <img src="img/recipe/recipe06.jpg" alt="">
-                                <p class="recipe-card__hashtag">#簡単&nbsp;#ヘルシー&nbsp;#パーティ飯<br>#旬の野菜&nbsp;#ドレッシング</p>
-
-
-                            </div>
-                        </a>
-                    </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <div class="recipe-card">
+                                    <p class="recipe-card__title">きゅうりのキムチ和え</p>
+                                    <p class="recipe-card__name"><i class="fas fa-apple-alt fa-lg"></i>BBBさん</p>
+                                    <div class="recipe-card__img"><img src="img/recipe/recipe05.jpg" alt="きゅうりのキムチ和え"></div>
+                                    <p class="recipe-card__hashtag">#おつまみ&nbsp;#おかず<br>#今が旬&nbsp;#きゅうり大量消費</p>
 
 
-                </ul>
-                <!-- If we need navigation buttons -->
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <div class="recipe-card">
+                                    <p class="recipe-card__title">カラフルサラダ</p>
+                                    <p class="recipe-card__name"><i class="fas fa-star-of-life fa-lg"></i>料理人さん</p>
+                                    <div class="recipe-card__img"><img src="img/recipe/recipe06.jpg" alt="カラフルサラダ"></div>
+                                    <p class="recipe-card__hashtag">#簡単&nbsp;#ヘルシー&nbsp;#パーティ飯<br>#旬の野菜&nbsp;#ドレッシング</p>
+
+
+                                </div>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </div>
                 <div class="swiper-button-prev"><i class="fas fa-chevron-left"></i></div>
                 <div class="swiper-button-next"><i class="fas fa-chevron-right"></i></div>
+
             </div>
 
+            <div class="gizagiza-bottom"></div>
+
+
+        </section>
+
+        <section class="guide">
+            <h2 class="section__h2">ご利用ガイド</h2>
+
+            <dl class="accordion js-accordion">
+                <div class="accordion__item js-accordion-trigger">
+                    <dt class="accordion__title">ご注文について</dt>
+                    <dd class="accordion__content">
+                        ここにテキストを入れます。ここにテキストを入れます。ここにテキストを入れます。ここにテキストを入れます。ここにテキストを入れます。ここにテキストを入れます。ここにテキストを入れます。ここにテキストを入れます。
+                    </dd>
+                </div>
+                <div class="accordion__item js-accordion-trigger">
+                    <dt class="accordion__title">お支払い方法について</dt>
+                    <dd class="accordion__content">
+                        ここにテキストを入れます。ここにテキストを入れます。ここにテキストを入れます。ここにテキストを入れます。ここにテキストを入れます。ここにテキストを入れます。ここにテキストを入れます。ここにテキストを入れます。
+                    </dd>
+                </div>
+                <div class="accordion__item js-accordion-trigger">
+                    <dt class="accordion__title">キャンセル・返品について</dt>
+                    <dd class="accordion__content">
+                        ここにテキストを入れます。ここにテキストを入れます。ここにテキストを入れます。ここにテキストを入れます。ここにテキストを入れます。ここにテキストを入れます。ここにテキストを入れます。ここにテキストを入れます。
+                    </dd>
+                </div>
+                <div class="accordion__item js-accordion-trigger">
+                    <dt class="accordion__title">領収書について</dt>
+                    <dd class="accordion__content">
+                        ここにテキストを入れます。ここにテキストを入れます。ここにテキストを入れます。ここにテキストを入れます。ここにテキストを入れます。ここにテキストを入れます。ここにテキストを入れます。ここにテキストを入れます。
+                    </dd>
+                </div>
+            </dl>
 
         </section>
 
@@ -291,8 +333,10 @@
     </main>
 
     <footer class="footer">
+        <div class="gizagiza-top"></div>
+
         <div class="footer-top">
-            <h3 class="footer-top__h3">安心安全の<br>
+            <h3 class="footer-top__h3 fadeInLeftTrigger">安心安全の<br>
                 オーガニック野菜<br>
             </h3>
         </div>
@@ -306,6 +350,8 @@
 
 
     <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"></script>
     <!-- Font Awesome -->
     <script defer src="https://use.fontawesome.com/releases/v5.10.2/js/all.js"></script>
 
@@ -313,6 +359,7 @@
     <script src="js/accordion.js"></script>
     <script src="js/hamburger.js"></script>
     <script src="js/list.js"></script>
+    <script src="js/inview.js"></script>
 
 
 

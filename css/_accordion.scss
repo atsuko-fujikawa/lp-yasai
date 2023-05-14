@@ -1,21 +1,16 @@
 /* アコーディオン全体 */
 .accordion {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-
-  &__item {
-    width: 47%;
-  }
-
-  &__title {
-    background-color: $beige;
-    border-radius: 3rem;
-    padding: 1rem 0;
-    margin-bottom: 3rem;
-  }
+  margin: 0 auto;
 }
 
+/* アコーディオン */
+.accordion__item {
+  // border: 3px solid $green;
+  margin-top: 2rem;
+  background-color: $white;
+  cursor: pointer;
+  border-radius: 3rem;
+}
 
 /* アコーディオンのタイトル */
 .accordion__title {

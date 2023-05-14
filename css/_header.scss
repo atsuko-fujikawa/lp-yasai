@@ -9,7 +9,12 @@ h1 {
     display: flex;
     align-items: flex-end;
     justify-content: right;
-    
+
+    @include sp {
+        aspect-ratio: 10 / 8;
+        background-position: 80% 50%;
+    }
+
 
     &__h3 {
         font-family: $accent-font;
@@ -17,7 +22,7 @@ h1 {
         font-style: normal;
         color: $white;
         text-align: right;
-        font-size: 4rem;
+        font-size: min(3.5vw, 50px);  
         width: 80%;
         max-width: $max;
         margin: 3rem auto;
@@ -25,14 +30,83 @@ h1 {
         transform: skewX(-12deg);
         line-height: 1.6;
 
+        @include sp {
+            font-size: 2rem;
+            width: 90%;
+            text-align: right;
+        }
+
     }
 }
 
-.header {
+.sp-header {
+    display: none;
+
+    @include sp {
+        display: block;
+
+    }
+
+    .nav-button {
+        display: block;
+        position: fixed; // 表示確認のため後ほどコメントアウトを外します
+        top: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 5rem;
+        height: 5rem;
+        font-size: 3.1rem;
+        background-color: $green;
+        color: $white;
+        cursor: pointer;
+        z-index: 10000;
+
+    }
+
+    .sp-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: none;
+        width: 100%;
+        padding: 4rem;
+        font-size: 2.4rem;
+        text-align: center;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-top: 1px solid $beige;
+        box-sizing: border-box;
+        z-index: 9999;
+    }
+
+    .sp-nav-list {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        li {
+            margin-bottom: 4rem;
+
+            a {
+                color: $black;
+                font-size: 2rem;
+            }
+        }
+    }
+}
+
+.pc-header {
+
     background-color: $green;
     height: 6rem;
     display: flex;
     align-items: center;
+
+    @include sp {
+        display: none;
+    }
+
 }
 
 .pc-nav {
@@ -47,6 +121,25 @@ h1 {
         a {
             display: inline-block;
             color: $white;
+            display: inline-block;
+            text-decoration: none;
+            position: relative;
+            transition: .3s;
+
+            &::after {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                content: '';
+                width: 0;
+                height: 2px;
+                background-color: $white;
+                transition: .3s;
+            }
+
+            &:hover::after {
+                width: 100%;
+            }
         }
     }
 }

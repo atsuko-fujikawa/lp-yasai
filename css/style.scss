@@ -3,8 +3,9 @@ $white: #fff;
 $black: #333;
 $green: #1A7400;
 $red: #DD483B;
-$beige: #fff9eb;
+$beige: #e9e0cf;
 $brown: #4f371f;
+$gray: #ddd;
 
 $main-font: "游ゴシック体",
 "Yu Gothic",
@@ -19,18 +20,40 @@ sans-serif;
 
 $accent-font: "vdl-penletter", sans-serif;
 
-$bp: 750px;
-$max: 860px;
+$bp: 768px;
+$max: 960px;
 
 @mixin sp {
     @media (max-width:($bp)) {
         @content;
     }
 }
+@mixin tab {
+    @media screen and (max-width: 1023px) and (min-width: $bp) {
+        @content;
+    }
+}
+
+@mixin pc {
+    @media (min-width:769px) {
+        @content;
+    }
+}
+
+
 
 html {
     font-size: 62.5%;
+
+    @include sp {
+        font-size: calc(10 / 375 * 100vw);
+    }
+
+    @include tab {
+        font-size: 1vw;
+    }
 }
+
 
 body {
     font-family: $main-font;
@@ -45,7 +68,7 @@ body {
 }
 
 img {
-    max-width: 100%;
+    width: 100%;
     vertical-align: bottom;
 }
 
@@ -76,6 +99,11 @@ p {
     margin: 0;
 }
 
+
 ///////////// scssファイルの読み込み ///////////////
  
-@import "header","section","humburger","modal","slider","footer";
+@import "bg","header","section","humburger","modal","accordion","footer","animation";
+
+// .cover {
+//     display: none;
+// }

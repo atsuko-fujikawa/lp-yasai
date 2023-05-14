@@ -1,0 +1,80 @@
+// ベージュ背景
+
+.points,
+.trial,
+.guide {
+    background-color: $beige;
+}
+
+// 木目の背景
+
+.recipe {
+    background-image: url(../img/parts/bg-white.jpg);
+    background-repeat: repeat-y;
+    background-size: cover;
+
+    @include sp {
+        background-size: contain;
+    }
+
+}
+
+.kinds {
+    background-image: url(../img/parts/bg-white.jpg);
+    background-repeat: repeat-y;
+    background-size: cover;
+
+    @include sp {
+        background-size: contain;
+    }
+
+}
+
+.gizagiza-top {
+    position: relative;
+    background: $beige;
+    height: 5rem;
+    width: 100vw;
+    max-width: 100vw;
+
+
+    &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        left: -61%;
+        top: 100%;
+        z-index:5;
+        display: block;
+        height: 20px;
+        background-size: 20px 100%;
+        background-image: linear-gradient(135deg, $beige 25%, transparent 25%), linear-gradient(225deg, $beige 25%, transparent 25%);
+        background-position: 0 0;
+    }
+}
+
+.gizagiza-bottom {
+    position: relative;
+    background: $beige;
+    height: 5rem;
+    width: 100vw;
+    max-width: 100vw;
+
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0px;
+        transform: translateY(-100%) rotate(180deg);
+        right: 0;
+        left: 0;
+        z-index: 5;
+        display: block;
+        height: 20px;
+        background-size: 20px 100%;
+        background-position: 0 0;
+        background-image: linear-gradient(135deg, $beige 25%, transparent 25%), linear-gradient(225deg, $beige 25%, transparent 25%);
+
+
+    }
+}

@@ -7,6 +7,10 @@
     justify-content: left;
     position: relative;
 
+    @include sp {
+        aspect-ratio: 10 / 5;
+    }
+
     &::before {
         content: '';
         /* ↓暗いオーバーレイを半透明で配置 */
@@ -36,6 +40,12 @@
         z-index: 1000;
         transform: skewX(-12deg);
         line-height: 1.6;
+
+        @include sp {
+            font-size: 2rem;
+            width: 90%;
+            text-align: left;
+        }
     }
 
 }
