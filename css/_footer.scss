@@ -6,6 +6,7 @@
     display: flex;
     justify-content: left;
     position: relative;
+    z-index: -1;
 
     @include sp {
         aspect-ratio: 10 / 5;
