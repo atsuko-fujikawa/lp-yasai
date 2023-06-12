@@ -99,11 +99,12 @@ p {
     margin: 0;
 }
 
+[v-cloak] {
+    display: none;
+  }
+
 
 ///////////// scssファイルの読み込み ///////////////
  
 @import "bg","header","section","humburger","modal","accordion","footer","animation";
 
-// .cover {
-//     display: none;
-// }
